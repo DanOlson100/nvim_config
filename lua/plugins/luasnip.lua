@@ -2,7 +2,8 @@
 -- Keep seperate from nvim-cmp to execute the build for jsregexp
 return {
     {   "L3MON4D3/LuaSnip",
-        build = "make install_jsregexp"
+        build = "make install_jsregexp",
+        enabled = False
     },
 }
 

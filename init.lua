@@ -11,9 +11,15 @@ local HOME=os.getenv("HOME") or ""
 vim.g.mapleader = ','
 vim.g.maplocalleader = ','
 
--- Diable NetRW for Nvim-Tree
+-- Disable NetRW for Nvim-Tree
 vim.g.loaded_netrw = 1
 vim.g.loaded_netrwPlugin = 1
+
+-- Disable some providers
+vim.g.loaded_ruby_provider = 0
+vim.g.loaded_node_provider = 0
+--vim.g.loaded_perl_provider = 0
+--vim.g.loaded_python3_provider = 0
 
 -- Load Lazy Vim for Plugins
 require("config.lazy")
@@ -391,7 +397,6 @@ vim.api.nvim_create_autocmd( "FileType", { pattern =  {"spice"},                
 --}}}
 --"""""""""""""""""""""""""""""""""""""""""""""""""
 -- Set the Color Last                           {{{
- 
 
 -- Set the Color Scheme one more Time
 -- as some Plugin is overwritting the

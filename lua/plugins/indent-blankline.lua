@@ -8,7 +8,7 @@ return {
 --            char = '┊',
 --            show_trailing_blankline_indent = false,
 --        },
-       config = function()
+       iblconfig = function()
            require("ibl").setup {}
        end,
     }

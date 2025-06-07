@@ -1,22 +1,23 @@
 -- Harpoon for Project Navigation  
 return {
-    { 'ThePrimeagen/harpoon',
-        branch = "harpoon2",
-        dependencies = { 'nvim-lua/plenary.nvim' },
+    'ThePrimeagen/harpoon',
+    branch = "harpoon2",
+    dependencies = { 'nvim-lua/plenary.nvim' },
 
 -- Setup Harpoon
-        config = function()
-            require("harpoon").setup {
-                global_settings = {
-                    save_on_toggle = false,
-                    save_on_change = true,
-                    enter_on_sendcmd = false,
-                    tmux_autoclose_windows = false,
-                    excluded_filetypes = { "harpoon" },
-                    mark_branch = false,
-                },
-            }
-        end,
-    }
+    config = function()
+        local status, harpoon = pcall(require, "harpoon")
+        if status then
+
+            -- Required
+            harpoon:setup()
+
+            -- Harpoon Keybindings
+            vim.keymap.set( "n", "<leader>mf", function() harpoon:list():add() end,                          { desc = 'Harpoon Add File' } )
+            vim.keymap.set( "n", "<leader>ff", function() harpoon.ui:toggle_quick_menu(harpoon:list()) end,  { desc = 'Harpoon Menu'     } )
+            vim.keymap.set( "n", "<leader>nf", function() harpoon:list():next() end,                         { desc = 'Harpoon Next File'} )
+            vim.keymap.set( "n", "<leader>pf", function() harpoon:list():prev() end,                         { desc = 'Harpoon Prev File'} )
+        end
+    end,
 }
 

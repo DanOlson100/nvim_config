@@ -1,6 +1,8 @@
 -- Mason LSP and other Installer PlugIn
 return {
     "mason-org/mason.nvim",
+
+-- Setup Mason Options
     opts = {
         ui = {
             icons = {
@@ -9,5 +11,10 @@ return {
                 package_uninstalled = "✗"
             }
         }
-    }
+    },
+
+-- Setup Mason
+    config = function()
+        require('mason').setup({})
+    end,
 }

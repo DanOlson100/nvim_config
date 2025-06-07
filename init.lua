@@ -28,29 +28,6 @@ require("config.lazy")
 --"""""""""""""""""""""""""""""""""""""""""""""""""
 -- Various Functions                            {{{
 
--- Check File/Dir Exists
-local function exists(name)
-    if type(name)~="string" then return false end
-    return os.rename(name,name) and true or false
-end
-
--- Check if File
-local function IsFile(name)
-    if type(name)~="string" then return false end
-    if not exists(name) then return false end
-    local f = io.open(name)
-    if f then
-        f:close()
-        return true
-    end
-    return false
-end
-
--- Check if Dir
-local function IsDir(name)
-    return (exists(name) and not IsFile(name))
-end
-
 -- Large File Support
 local bigfile = 1024*1024
 local aug = vim.api.nvim_create_augroup("buf_large", {clear = true})
@@ -105,6 +82,7 @@ vim.opt.termguicolors = true                          -- Turn on True Colors if 
 vim.opt.linespace = 0                                 -- Space it out
 vim.opt.ruler = true                                  -- Show current position
 vim.opt.number = true                                 -- Show line numbers, use cor for relative numbers
+vim.opt.relativenumber = true                         -- Show line numbers as relative numbers
 vim.opt.backspace = "indent,eol,start"                -- Make Backspace work
 vim.opt.errorbells = false                            -- Don't make noise
 vim.opt.visualbell = false                            -- Don't Blink cursor
@@ -173,6 +151,7 @@ vim.opt.incsearch = true                              -- Highlight as you type s
 vim.opt.showmode = true                               -- Show vim's mode
 vim.opt.ignorecase = true                             -- Ignore case when searching
 vim.opt.smartcase = true                              -- Use case when searching using upper case chars
+vim.opt.inccommand = "split"                          -- Show window split with searched terms
 
 --}}}
 --"""""""""""""""""""""""""""""""""""""""""""""""""
@@ -228,9 +207,9 @@ vim.opt.foldlevelstart = 0
 vim.api.nvim_create_augroup("gitcommit", {clear = true})
 vim.api.nvim_create_autocmd( "FileType", { pattern =  {"gitcommit"}, callback = function() vim.opt.textwidth=72 vim.opt.colorcolumn="51,73" end, group = "gitcommit" } )
 
-if IsFile( HOME .. "/.vim/filetypes.vim") then
+if vim.uv.fs_stat( HOME .. "/.vim/filetypes.vim") then
     vim.cmd( "source" .. HOME .. "/.vim/filetypes.vim")
-elseif IsFile( HOME .. "/vimfiles/filetypes.vim") then
+elseif vim.uv.fs_stat( HOME .. "/vimfiles/filetypes.vim") then
     vim.cmd( "source" .. HOME .. "/vimfiles/filetypes.vim")
 end
 --}}}
@@ -369,12 +348,6 @@ vim.keymap.set( "n", "<leader>nt", "<Cmd>NvimTreeToggle<CR>")
 
 -- Toggle Context
 vim.keymap.set( "n", "<leader>ct", "<Cmd>ContextToggle<CR>")
-
--- Harpoon Keybindings
-vim.keymap.set( "n", "<leader>mf", function() require('harpoon.mark').add_file() end,         { desc = 'Harpoon Add File'} )
-vim.keymap.set( "n", "<leader>ff", function() require('harpoon.ui').toggle_quick_menu() end,  { desc = 'Harpoon Menu'} )
-vim.keymap.set( "n", "<leader>nf", function() require('harpoon.ui').nav_next() end,           { desc = 'Harpoon Next File'} )
-vim.keymap.set( "n", "<leader>pf", function() require('harpoon.ui').nav_prev() end,           { desc = 'Harpoon Prev File'} )
 
 -- Add Comments with <leader>c , remove with <leader>z
 vim.api.nvim_create_augroup( "comments", { clear = true})

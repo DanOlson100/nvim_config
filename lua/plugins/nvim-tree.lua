@@ -25,6 +25,10 @@ return {
         filters = {
             dotfiles = true,
         },
+
+        -- Toggle NvimTree
+        vim.keymap.set( "n", "<leader>nt", "<Cmd>NvimTreeToggle<CR>")
+
 	}
     end,
 }

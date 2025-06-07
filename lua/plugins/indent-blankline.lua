@@ -10,6 +10,9 @@ return {
 	---@type ibl.config
        temp = function()
            require("ibl").setup({})
+
+            -- Toggle IndentGuides
+            vim.keymap.set( "n", "<leader>ig", "<Cmd>IndentGuidesToggle<CR>")
        end,
     }
 }

@@ -17,12 +17,26 @@ return {
     'vim-scripts/IndexedSearch',   -- Upgrade Search with status and location
     'wellle/context.vim',          -- Show only context funtion/loops/if - Similar to TreeSitter-Context for Nvim
 
-    -- DiffChar Settings
+    -- Settings
     config = function()
+
+        -- DiffChar Settings
         local status, diff = pcall( require, "vim-diff-enhanced")
         if status then
             vim.g.DiffUnit = "Char"
             --vim.g.DiffUnit = "Word"
+        end
+
+        -- Toggle UndoTree
+        local status, undo = pcall( require, "undotree")
+        if status then
+            vim.keymap.set( "n", "<leader>ut", "<Cmd>UndotreeToggle<CR>")
+        end
+
+        --Toggle Context
+        local status, cont = pcal( require, "context")
+        if status then
+            vim.keymap.set( "n", "<leader>ct", "<Cmd>ContextToggle<CR>")
         end
     end,
 }

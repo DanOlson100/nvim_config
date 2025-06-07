@@ -207,6 +207,7 @@ vim.opt.foldlevelstart = 0
 vim.api.nvim_create_augroup("gitcommit", {clear = true})
 vim.api.nvim_create_autocmd( "FileType", { pattern =  {"gitcommit"}, callback = function() vim.opt.textwidth=72 vim.opt.colorcolumn="51,73" end, group = "gitcommit" } )
 
+-- Load filetypes.vim if it exists
 if vim.uv.fs_stat( HOME .. "/.vim/filetypes.vim") then
     vim.cmd( "source" .. HOME .. "/.vim/filetypes.vim")
 elseif vim.uv.fs_stat( HOME .. "/vimfiles/filetypes.vim") then
@@ -336,18 +337,6 @@ vim.keymap.set( "n", "cos", function() vim.cmd("set spell!") end )
 vim.keymap.set( "n", "cow", function() vim.cmd("set wrap!") end )
 vim.keymap.set( "n", "ccl", function() vim.cmd("set cursorline!") end )
 vim.keymap.set( "n", "ccc", function() vim.cmd("set cursorcolumn!") end )
-
--- Toggle IndentGuides
-vim.keymap.set( "n", "<leader>ig", "<Cmd>IndentGuidesToggle<CR>")
-
--- Toggle UndoTree
-vim.keymap.set( "n", "<leader>ut", "<Cmd>UndotreeToggle<CR>")
-
--- Toggle NvimTree
-vim.keymap.set( "n", "<leader>nt", "<Cmd>NvimTreeToggle<CR>")
-
--- Toggle Context
-vim.keymap.set( "n", "<leader>ct", "<Cmd>ContextToggle<CR>")
 
 -- Add Comments with <leader>c , remove with <leader>z
 vim.api.nvim_create_augroup( "comments", { clear = true})

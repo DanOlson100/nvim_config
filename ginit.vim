@@ -1,11 +1,18 @@
 " Enable Mouse
 set mouse=a
 
+" Download fonts from Nerd Fonts
+" Use curl -OL https://github.com/ryanoasis/nerd-fonts/releases/latest/download/hack.zip
+" Copy and extract to ~/.local/share/fonts/
+" Use 'fc-cache -v ~/.local/share/fonts/' to add it to the cache
+" Use 'fc-list <name>' to list out the font
+
 "" Set Editor Font
-"if exists(':GuiFont')
-"    "Use GuiFont! to ignore font errors
-"    GuiFont {font_name}:h{size}
-"endif
+if exists(':GuiFont')
+    "Use GuiFont! to ignore font errors
+    "GuiFont {font_name}:h{size}
+    GuiFont! Hack Nerd Font Mono:h12
+endif
 
 "" Disable GUI Tabline
 "if exists(':GuiTabline')

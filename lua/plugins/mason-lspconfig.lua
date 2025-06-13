@@ -8,12 +8,10 @@ return {
 
 -- Setup Mason-LSPConfig
 -- The Servers are setup in nvim-lspconfig.lua
-    config = function()
-
-        -- Setup Mason-lspconfig
+    vim.schedule(function()
         require('mason-lspconfig').setup({
             ensure_installed = { 'bashls', 'lua_ls', 'pylsp' },
         })
-    end,
+    end),
 }
 

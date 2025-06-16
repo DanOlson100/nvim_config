@@ -88,7 +88,9 @@ vim.opt.errorbells = false                            -- Don't make noise
 vim.opt.visualbell = false                            -- Don't Blink cursor
 --vim.opt.whichwrap:prepend {"<,>,h,l,[,]"}             -- Backspace and cursor key wrap
 vim.opt.startofline = false                           -- Don't jump to the first char when paging
-vim.opt.scrolloff = 10                                -- Keep cursor 10 lines from the top/bottom
+vim.opt.scrolloff =  999                              -- Keep cursor x lines from the top/bottom
+vim.opt.sidescrolloff = 999                           -- Keep cursor x columns in the middle when side scrolling
+vim.opt.cursorline = true                             -- Use the color scheme for the current line and line Number
 vim.opt.laststatus = 2                                -- Always show the status line as two lines
 vim.opt.ttyfast = true                                -- Setup redraw for faster terminals
 vim.opt.lazyredraw = true                             -- Don't redraw the screen when running macros
@@ -366,6 +368,7 @@ vim.api.nvim_create_autocmd( "FileType", { pattern =  {"spice"},                
 if ( vim.g.loaded_molo == 1 ) then
     vim.cmd.colorscheme 'molo'
 end
+
 
 --}}}
 

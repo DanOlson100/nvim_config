@@ -1,3 +1,5 @@
+" Dan's neovim-qt Config File
+
 " Enable Mouse
 set mouse=a
 
@@ -14,14 +16,24 @@ if exists(':GuiFont')
     GuiFont! Hack Nerd Font Mono:h12
 endif
 
-"" Disable GUI Tabline
-"if exists(':GuiTabline')
-"    GuiTabline 0
-"endif
+" Adjust the GUI to use the Neovim colorscheme
+if exists(':GuiAdaptiveColor')
+    GuiAdaptiveColor 1
+endif
 
-" Disable GUI Popupmenu
+" Adjust the GUI to use Qt Styles
+if exists(':GuiAdaptiveStyle')
+    GuiAdaptiveStyle fusion
+endif
+
+" Enable GUI Tabline
+if exists(':GuiTabline')
+    GuiTabline 1
+endif
+
+" Enable GUI Popupmenu
 if exists(':GuiPopupmenu')
-    GuiPopupmenu 0
+    GuiPopupmenu 1
 endif
 
 " Enable GUI ScrollBar

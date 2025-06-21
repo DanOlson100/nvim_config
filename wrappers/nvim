@@ -1,0 +1,5 @@
+#!/bin/sh
+
+# Start neovim
+$HOME/.local/bin/nvim $@
+

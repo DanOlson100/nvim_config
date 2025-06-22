@@ -70,7 +70,10 @@ return {
         -- For the cmdline in neovim auto show the selections and use the same keymap as editing.
         cmdline = {
             keymap = { preset = "inherit" },
-            completion = { menu = { auto_show = true } },
+
+            -- Don't Auto Show the Menu Use, <C-Space>
+            -- This allows the use of up/down arrows for history
+            --completion = { menu = { auto_show = true } },
         },
     },
     opts_extend = { "sources.default" }

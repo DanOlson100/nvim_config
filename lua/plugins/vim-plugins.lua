@@ -10,7 +10,7 @@ return {
     'mbbill/undotree',             -- Visualize Undo as a Tree
     'preservim/vim-indent-guides', -- Indent Color guides
     'rickhowe/diffchar.vim',       -- Highlight only the Exact differences
-    'sheerun/vim-polyglot',        -- Various Syntax Files
+    --'sheerun/vim-polyglot',        -- Various Syntax Files
     'tpope/vim-eunuch',            -- Various System commands
     'tpope/vim-fugitive',          -- Git in Vim
     'tpope/vim-surround',          -- Add/Remove Surrounding anything

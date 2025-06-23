@@ -34,7 +34,7 @@ return {
         end
 
         --Toggle Context
-        local status, cont = pcal( require, "context")
+        local status, cont = pcall( require, "context")
         if status then
             vim.keymap.set( "n", "<leader>ct", "<Cmd>ContextToggle<CR>")
         end
